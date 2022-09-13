@@ -1,55 +1,112 @@
-﻿/*
+﻿/*int rows = 3;
+int columns = 4;
 
-
-Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел 
-больше 0 ввёл пользователь. Ввод чисел происходит через Enter, останавливается 
-при введении слова "stop" 
-
-int GetArr()
-{
-    Console.WriteLine("Введите числа через пробел (Stop для остановки)");
-    int count = 0;
-    for (int i = 0; ; i++)
+double[,] GetArray(int m, int n){
+    var result = new double[m, n];
+    for (int i = 0; i < m; i++)
     {
-        string a = Console.ReadLine();
-        if (a == "stop") break;
-        else
+        for (int j = 0; j < n; j++)
         {
-            int b = Convert.ToInt32(a);
-            if (b > 0) count++;
+
+            result[i, j] = new Random().NextDouble();
         }
     }
-    System.Console.WriteLine($"Введено {count} положительных чисел");
-    return count;
-}
-
-GetArr();
-
-
-
-Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, 
-заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; 
-значения b1, k1, b2 и k2 задаются пользователем.
-
-
-
-string[] stringArray = Console.ReadLine().Split(' ');
-double b1 = double.Parse(stringArray[0]);
-double k1 = double.Parse(stringArray[1]);
-double b2 = double.Parse(stringArray[2]);
-double k2 = double.Parse(stringArray[3]);
-
-double[] GetPoint(double b1, double k1, double b2, double k2){
-    double[] result = new double[2];
-    result[0] = (b2 - b1) / (k1 - k2);
-    result[1] = k1 * result[0] + b1;
-
     return result;
 }
 
-System.Console.WriteLine(string.Join(" ", GetPoint(b1, k1, b2, k2)));
+void PrintArray(double[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write($"{arr[i, j]} ");
+        }
+        System.Console.WriteLine();
+    }
+}
 
+PrintArray(GetArray(rows, columns));
+
+
+int rows = 3;
+int columns = 4;
+
+int[,] GetArray(int m, int n){
+    var result = new int[m, n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+
+            result[i, j] = new Random().Next(110);
+        }
+    }
+    return result;
+}
+
+bool Contains(int[,] arr, int element)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if (arr[i, j] == element)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+var arr = GetArray(rows, columns);
+foreach (var item in arr)
+{
+    System.Console.WriteLine(item);
+}
+System.Console.WriteLine(Contains(arr, 12));
+
+
+
+int rows = 3;
+int columns = 4;
+
+int[,] GetArray(int m, int n){
+    var result = new int[m, n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+
+            result[i, j] = new Random().Next(110);
+        }
+    }
+    return result;
+}
+
+
+double[] GetAverge(int[,] arr)
+{
+    var result = new double[arr.GetLength(1)];
+
+    for (int i = 0; i < arr.GetLength(1); i++)
+    {
+        double sum = 0;
+        for (int j = 0; j < arr.GetLength(0); j++)
+        {
+            sum += arr[j, i];
+        }
+        result[1] = Math.Round(sum / arr.GetLength(0), 2);
+    }
+    return result;
+}
+
+
+
+foreach (var item in GetAverge(GetArray(rows, columns)))
+{
+    System.Console.WriteLine(item);
+}
 
 */
-
-
